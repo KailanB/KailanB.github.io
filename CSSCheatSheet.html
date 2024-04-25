@@ -1,0 +1,176 @@
+<DOCTYPE html>
+
+<html lang="en">
+    
+<head>
+    <title>Kailan's CSS Cheat Sheet</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Kailan Bates">
+    <meta name="page description" content="Home page of Kailan's website">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Belleza&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div>
+        <nav  class="nav">
+            <div class="navLoc">
+                <h3 class="lightFont">CSS Cheat Sheet</h3>
+            </div> 
+            <ul class="navList">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="HTMLcheatsheet.html">HTML Cheat Sheet</a></li>
+                <li><a href="Resume.html">Resume</a></li>
+                <li><a href="Hobbies.html">Hobbies</a></li>
+            </ul>
+        </nav>   
+    </div>
+    
+    <div class="tables">
+        <div>
+            <h3><strong class="tableTitle">Favorite Selectors</strong></h3> <!-- https://www.w3schools.com/cssref/css_selectors.php used to reference for selectors-->
+            <table border="1">
+                <tr>
+                    <th>Selector</th>
+                    <th>Written</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>element</td>
+                    <td>h1</td>
+                    <td>Selects all h1 elements</td>
+                </tr>  
+                <tr>
+                    <td>.class</td>
+                    <td>.examples</td>
+                    <td>Selects all elements with class="examples"</td>
+                </tr>
+                <tr>
+                    <td>#id</td>
+                    <td>#example</td>
+                    <td>Selects the element (id's must be unique) with id="example"</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td>*</td>
+                    <td>Selects ALL elements</td>
+                </tr>
+                <tr>
+                    <td>element, element</td>
+                    <td>p, h1</td>
+                    <td>Selects all p and all h1 elements</td>
+                </tr>
+                <tr>
+                    <td>element element</td>
+                    <td>div p</td>
+                    <td>Selects all p elements within div elements</td>
+                </tr>
+                <tr>
+                    <td>element.class</td>
+                    <td>p.examples</td>
+                    <td>Selects all p elements with class="examples"</td>
+                </tr>
+                <tr>
+                    <td>element>element</td>
+                    <td>div>p</td>
+                    <td>Selects all p elements with the parent element div</td>
+                </tr>
+                <tr>
+                    <td>element+element</td>
+                    <td>div+p</td>
+                    <td>Selects the all p element that are directly after div elements</td>
+                </tr>
+                <tr>
+                    <td>element::first-child</td>
+                    <td>::p</td>
+                    <td>Selects all p elements that are the first child</td>
+                </tr>
+                <tr>
+                    <td>element:first-of-type</td>
+                    <td>p:first-of-type</td>
+                    <td>Selects all p elements that are the first p of its parent</td>
+                </tr>
+                <tr>
+                    <td>element:last-child</td>
+                    <td>p:last-child</td>
+                    <td>Selects all p elements that are the last child of its parent</td>
+                </tr>
+                <tr>
+                    <td>element:last-of-type</td>
+                    <td>p:last-of-type</td>
+                    <td>Selects all p elements that are the last p of its parent</td>
+                </tr>
+                <tr>
+                    <td>:nth-child(n)</td>
+                    <td>p:nth-child(n)</td>
+                    <td>Selects all p elements that are the nth child of their parent</td>
+                </tr>
+                <tr>
+                    <td>:nth-of-type(n)</td>
+                    <td>p:nth-of-type(n)</td>
+                    <td>Selects all p elements that are the nth p of their parent</td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+    <div class="tables">
+        <div>
+            <h3><strong class="tableTitle">Favorite Properties and Functions</strong></h3>
+            <table border="1">
+                <tr>
+                    <th>Property or Function</th>
+                    <th>Example</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>flex</td>
+                    <td>display: flex;</td>
+                    <td>Sets a container to function using the flex-box layout. This allows items such as paragraphs or other containers within the flex-box to easily adapt to different screen sizes</td>
+                </tr>
+                <tr>
+                    <td>flex-direction</td>
+                    <td>flex-direction: column; / row / row-reverse / column-reverse</td>
+                    <td>Changes the direction that flex items within the box flow. Row runs left to right, column top to bottom</td>
+                </tr>
+                <tr>
+                    <td>flex-wrap</td>
+                    <td>flex-wrap: nowrap; / wrap / wrap-reverse</td>
+                    <td>Changes the behavior of flex-items based on screen size. When items are set to wrap they start a new row or column when they run out of space. Default is nowrap</td>
+                </tr>
+                <tr>
+                    <td>box-sizing</td>
+                    <td>box-sizing: content-box; / border-box</td>
+                    <td>Adjust whether or not a container takes the padding and border into consideration of it's total width and height. Border-box includes padding and border in total width and height. Default is content-box.</td>
+                </tr>
+                <tr>
+                    <td>text-decoration</td>
+                    <td>text-decoration: none; / underline / line-through </td>
+                    <td>Adjsuts text to have decorations or not. Can also be used to remove dots on lists, or underlines on urls. </td>
+                </tr>
+                    <td>min()</td>
+                    <td>min(40vw, 200px)</td>
+                    <td>Chooses the lesser of the two input values as the width. Can also use max() to choose larger of two values</td>
+                </tr>
+                <tr>
+                    <td>calc()</td>
+                    <td>calc(10-5)</td>
+                    <td>Performs a calculation and uses the result as the value. Can be used with variabes or percentages</td>
+                </tr>
+                <tr>
+                    <td>rgb()</td>
+                    <td>rgb(55 20 80);</td>
+                    <td>Changes the colour of something based on the RGB scale</td>
+                </tr>
+            </table>
+        </div>   
+    </div>
+
+</body>
+
+</html>
