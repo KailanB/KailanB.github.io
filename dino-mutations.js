@@ -136,13 +136,6 @@ const MUTATIONS = [
         additionalInfo: null
     },
     {
-        name: "Parthenogenesis",
-        description: "Allows the player to reproduce without a mate.",
-        value: null,
-        criteria: null,
-        additionalInfo: "Does NOT transfer on Entomb"
-    },
-    {
         name: "Photosynthetic Regeneration (Herbivore)",
         description: "Regenerate stamina faster during the day.",
         value: "10%",
@@ -206,6 +199,27 @@ const MUTATIONS = [
         additionalInfo: null
     },
     {
+        name: "Gastronomic Regeneration",
+        description: "Eating restores a small amount of health.",
+        value: null,
+        criteria: "slot 2–4",
+        additionalInfo: null
+    },
+    {
+        name: "Hypermetabolic Inanition (Carnivore)",
+        description: "The less hunger you have the more damage you deal.",
+        value: null,
+        criteria: "slot 2–4",
+        additionalInfo: null
+    },
+    {
+        name: "Parthenogenesis",
+        description: "Allows the player to reproduce without a mate.",
+        value: null,
+        criteria: "slot 2–4",
+        additionalInfo: "Does NOT transfer on Entomb"
+    },
+    {
         name: "Tactile Endurance (Herbivore)",
         description: "Convert incoming damage to stamina.",
         value: null,
@@ -220,20 +234,6 @@ const MUTATIONS = [
         additionalInfo: null
     },
     {
-        name: "Gastronomic Regeneration",
-        description: "Eating restores a small amount of health.",
-        value: null,
-        criteria: "slot 2–4",
-        additionalInfo: null
-    },
-    {
-        name: "Hypermetabolic Inanition (Carnivore)",
-        description: "The less hunger you have the more damage you deal.",
-        value: null,
-        criteria: "slot 2–4",
-        additionalInfo: null
-    },
-        {
         name: "Augmented Tapetum (Carnivore)",
         description: "Increased vision at night.",
         value: null,
