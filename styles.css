@@ -1,7 +1,10 @@
 :root {
-    --BGColor: #0b130a;
+    --darkGreen: #0b130a;
     /* --HeaderBGColor: #7f7dc0; */
-    --color3: #cbfbf1;
+    --neonGreen: #cbfbf1;
+
+    --selectedColor: #ffffff;
+
     --color4: #130a35;
     --lightFont: #e7f6ff;
 
@@ -12,7 +15,7 @@
 }
 
 body {
-    background-color: var(--BGColor);
+    background-color: var(--darkGreen);
     margin: 0px;
     /* font-family: "Belleza", sans-serif ; */
     font-weight: 400;
@@ -56,7 +59,7 @@ p {
 
 .nav {
     background-color: var(--color4);
-    border-bottom: 2px solid var(--color3);
+    border-bottom: 2px solid var(--neonGreen);
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -75,7 +78,7 @@ p {
 }
 
 .navLoc {
-    border-right: 2px solid var(--BGColor);
+    border-right: 2px solid var(--darkGreen);
     padding-right: 8px;
     display: flex;
     align-items: center;
@@ -86,7 +89,7 @@ p {
 }
 
 .darkFont {
-    color: var(--BGColor);
+    color: var(--darkGreen);
 }
 
 
@@ -115,7 +118,7 @@ p {
     flex-direction: column;
     width: 300px;
     padding: 12px;
-    border: 1px solid var(--color3);
+    border: 1px solid var(--neonGreen);
     box-sizing: border-box;
     box-shadow: 0 0 10px rgba(255,255,255,0.08);
 }
@@ -123,8 +126,17 @@ p {
     height: 100px;
 
 }
+.mutation-item.selected {
+    border: var(--darkGreen) solid 2px;
+    background-color: var(--neonGreen);
+
+}
+.mutation-item.selected p, .mutation-item.selected h3 {
+    color: var(--darkGreen);
+
+}
 .mutation-item:hover {
-    border: 2px solid var(--color3);
+    border: 2px solid var(--neonGreen);
     /* box-shadow: 0 0 10px rgba(255, 255, 255, 0.08),
             0 0 2px rgba(255, 255, 255, 0.15); */
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
@@ -132,8 +144,9 @@ p {
 }
 
 
+
 .light-font-color {
-    color: var(--color3);
+    color: var(--neonGreen);
 }   
 
 .selected-mutation-generation {
