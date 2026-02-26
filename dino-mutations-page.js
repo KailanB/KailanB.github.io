@@ -60,10 +60,16 @@ class MutationBuilder {
 
     addMutationToGeneration(mutationId, genIndex) {
         const gen = this.generations[genIndex];
-        const emptyIndex = gen.mutations.findIndex(slot => slot == null);
+        console.log("gen at start", gen);
+        let emptyIndex = gen.mutations.findIndex(slot => slot == null);
 
-        if (emptyIndex === -1 && gen.mutations.length >= this.maxMutationsPerGeneration) return false; 
+        if (emptyIndex === -1 && gen.mutations.length < this.maxMutationsPerGeneration) {
+            emptyIndex = gen.mutations.length;
+        }
+        if (emptyIndex === -1) return false;
+        if (!this.canPlaceInSlot(mutationId, emptyIndex)) return false;
 
+        console.log("Gen: ", gen);
         gen.mutations[emptyIndex] = mutationId;
         return true;
     }
@@ -122,9 +128,19 @@ function addOnClicks() {
                 console.log("Mutation already selected");
                 return;
             }
-
             const mutationId = Number(this.dataset.id);
-            if (!builder.addMutationAuto(mutationId)) return;
+
+            console.log("AppState.selectedGeneration", AppState.selectedGeneration);
+            if(AppState.selectedGeneration !== null) {
+                if(!builder.addMutationToGeneration(mutationId, AppState.selectedGeneration - 1)) {
+                    console.log("Failed to add mutation to generation");
+                    return;
+                }
+            }
+            else {
+                if (!builder.addMutationAuto(mutationId)) return;
+            }
+            console.log("builder mutations", builder.generations);
             updateSelectedMutations();
         });
 
@@ -135,7 +151,7 @@ function addOnClicks() {
     document.querySelectorAll(".selected-mutation").forEach(slotDiv => {
         slotDiv.addEventListener("click", function () {
             const slotIndex = Number(this.dataset.mutationSlotIndex);
-            const generationId = Number(this.closest(".selected-mutation-generation").dataset.generationId);
+            const generationId = Number(this.closest(".selected-mutation-generation-row").dataset.generationId);
             builder.removeFromGeneration(generationId, slotIndex);
             slotDiv.dataset.mutationId = "";
             updateSelectedMutations();
@@ -182,7 +198,29 @@ function addOnClicks() {
         });
     });
 
+    document.querySelectorAll(".selected-mutation-generation").forEach(selectedContainer => {
+        selectedContainer.addEventListener("click", function () {
+            if(selectedContainer.classList.contains("selected")) {
+                clearSelectedGeneration();
+                AppState.selectedGeneration = null;
+            }
+            else {
+                clearSelectedGeneration();
+                selectedContainer.classList.add("selected");
+                AppState.selectedGeneration = Number(this.dataset.generationId);
+            }
+        });
+    });
 
+
+    
+
+}
+
+function clearSelectedGeneration() {
+    document.querySelectorAll(".selected-mutation-generation").forEach(selectedContainer => { 
+        selectedContainer.classList.remove("selected");
+    });
 }
 
 function updateSelectedMutations() {

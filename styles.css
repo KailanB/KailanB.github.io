@@ -149,12 +149,20 @@ p {
     color: var(--neonGreen);
 }   
 
-.selected-mutation-generation {
+.selected-mutation-generation-row {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: row;
     gap: 12px;
+}
+
+.selected-mutation-generation.selected {
+    border: 2px solid var(--neonGreen);
+    background-color: var(--neonGreen);
+}
+.selected-mutation-generation.selected h3{
+    color: var(--darkGreen);
 }
 
 .generation-row {
