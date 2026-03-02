@@ -87,7 +87,8 @@ const MUTATIONS = [
         description: "Restore some thirst while eating corpses.",
         value: "15%",
         criteria: null,
-        additionalInfo: null
+        additionalInfo: null,
+        dietType: ["carnivore"]
     },
     {
         name: "Hemomania (Carnivore)",
