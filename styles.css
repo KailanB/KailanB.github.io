@@ -2,6 +2,7 @@
     --darkGreen: #0b130a;
     /* --HeaderBGColor: #7f7dc0; */
     --neonGreen: #cbfbf1;
+    --neonPink: #f5cbfb;
 
     --selectedColor: #ffffff;
 
@@ -56,6 +57,42 @@ p {
     color: var(--lightFont);
 }
 
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.flex-row-left {
+    justify-content: left;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    justify-content: left;
+    align-items: center;
+}
+
+.button-light {
+    border: 2px solid var(--neonGreen);
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+} 
+.button-light.selected {
+    background-color: var(--neonGreen);
+    color: var(--darkGreen);
+    border: 2px solid var(--neonGreen);
+}
+.button-light.selected h3 {
+    color: var(--darkGreen);
+}
 
 .nav {
     background-color: var(--color4);
@@ -84,7 +121,7 @@ p {
     align-items: center;
 }
 
-.lightFont {
+.light-font {
     color: var(--lightFont);
 }
 
@@ -98,6 +135,7 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 35px;
     width: min(95vw, 1780px);
     padding: 25px;
 }
@@ -116,7 +154,7 @@ p {
 .mutation-item {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 325px;
     padding: 12px;
     border: 1px solid var(--neonGreen);
     box-sizing: border-box;
@@ -131,6 +169,7 @@ p {
     background-color: var(--neonGreen);
 
 }
+
 .mutation-item.selected p, .mutation-item.selected h3 {
     color: var(--darkGreen);
 
@@ -141,6 +180,13 @@ p {
             0 0 2px rgba(255, 255, 255, 0.15); */
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
     transform: scale(1.02); 
+}
+.mutation-item.removed {
+    border: 2px solid var(--neonPink);
+}
+
+.mutation-item-selectable {
+
 }
 
 
@@ -180,4 +226,29 @@ p {
     justify-content: center;
     gap: 20px;
     width: 100%;
+}
+
+.large-input {
+    width: min(95vw, 800px );
+}
+.mutation-remove-btn {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--neonGreen);
+
+    cursor: pointer;
+
+    padding: 2px 8px;
+    border: 2px solid var(--neonGreen);
+    border-radius: 4px;
+
+    transition: all 0.15s ease;
+}
+
+.mutation-name-margin-adjustment {
+    margin-right: 35px;
 }
