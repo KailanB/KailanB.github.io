@@ -29,7 +29,7 @@ const MUTATIONS = [
     {
         name: "Cellular Regeneration",
         description: "Recovers health slightly faster.",
-        value: "15%",
+        value: "15%, 20%, 25%",
         criteria: null,
         additionalInfo: null,
         dietType: null
@@ -37,7 +37,7 @@ const MUTATIONS = [
     {
         name: "Congenital Hypoalgesia",
         description: "Reduce incoming damage when fighting larger species.",
-        value: "15%",
+        value: "15%, 20%, 25%",
         criteria: null,
         additionalInfo: null,
         dietType: null
@@ -45,7 +45,7 @@ const MUTATIONS = [
     {
         name: "Efficient Digestion",
         description: "Your food drains more slowly.",
-        value: "20%",
+        value: "20%, 25%, 30%",
         criteria: null,
         additionalInfo: null,
         dietType: null,
@@ -53,7 +53,7 @@ const MUTATIONS = [
     {
         name: "Enhanced Digestion",
         description: "Decrease nutrition decay rate.",
-        value: "10%, 15%",
+        value: "10%, 15%, 25%",
         criteria: null,
         additionalInfo: null,
         dietType: null,
@@ -69,7 +69,7 @@ const MUTATIONS = [
     {
         name: "Epidermal Fibrosis",
         description: "Increase bleed resistance.",
-        value: "15%, 20%",
+        value: "15%, 20%, 25%",
         criteria: null,
         additionalInfo: null,
         dietType: null,
@@ -93,7 +93,7 @@ const MUTATIONS = [
     {
         name: "Hemomania (Carnivore)",
         description: "Do extra damage on bleeding target.",
-        value: "5%",
+        value: "5%, 7%, 9%?",
         criteria: null,
         additionalInfo: null,
         dietType: ["carnivore"]
@@ -109,7 +109,7 @@ const MUTATIONS = [
     {
         name: "Hydro-regenerative",
         description: "Recover health faster during rainy weather.",
-        value: "25%",
+        value: "25%, 50%, 75%",
         criteria: null,
         additionalInfo: null,
         dietType: null,
@@ -140,7 +140,7 @@ const MUTATIONS = [
     },
     {
         name: "Nocturnal",
-        description: "Faster health/locked health recover and higher move speed at night.",
+        description: "Faster health/locked health recovery.",
         value: "5%",
         criteria: null,
         additionalInfo: null,
@@ -164,7 +164,7 @@ const MUTATIONS = [
     },
     {
         name: "Photosynthetic Tissue",
-        description: "Faster health/locked health recovery and higher move speed during the day.",
+        description: "Faster health/locked health recovery.",
         value: "5%",
         criteria: null,
         additionalInfo: null,
@@ -173,7 +173,7 @@ const MUTATIONS = [
     {
         name: "Reabsorption",
         description: "Recover a small amount of water during the rainy weather or while swimming in drinkable water.",
-        value: "1, 2",
+        value: "1, 2, 3",
         criteria: null,
         additionalInfo: null,
         dietType: null,
@@ -197,7 +197,7 @@ const MUTATIONS = [
     {
         name: "Sustained Hydration",
         description: "Your water drains more slowly.",
-        value: "20%",
+        value: "20%, 25%, 30%",
         criteria: null,
         additionalInfo: null,
         dietType: null,
@@ -205,7 +205,7 @@ const MUTATIONS = [
     {
         name: "Truculency (Herbivore)",
         description: "Bucking has a higher chance to dismount latched animals.",
-        value: "5%",
+        value: "5%, 10%, 15%",
         criteria: null,
         additionalInfo: null,
         dietType: ["herbivore"]
@@ -221,7 +221,7 @@ const MUTATIONS = [
     {
         name: "Xerocole Adaptation (Herbivore)",
         description: "Gain some water when eating plants.",
-        value: "15%",
+        value: "15%, 20%, 25%",
         criteria: null,
         additionalInfo: null,
         dietType: ["herbivore"]
