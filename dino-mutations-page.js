@@ -162,33 +162,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+
 function addOnClicks() {
-
-    document.querySelectorAll(".mutation-item-selectable").forEach(item => {
-        item.addEventListener("click", function () {
-            if(item.classList.contains("selected")) {
-                builder.removeMutationId(Number(this.dataset.id));
-                item.classList.remove("selected");
-                updateSelectedMutations();
-                return;
-            }
-            const mutationId = Number(this.dataset.id);
-
-            if(AppState.selectedGeneration !== null) {
-                if(!builder.addMutationToGeneration(mutationId, AppState.selectedGeneration - 1)) {
-                    console.log("Failed to add mutation to generation");
-                    return;
-                }
-            }
-            else {
-                if (!builder.addMutationAuto(mutationId)) return;
-            }
-            console.log("builder mutations", builder.generations);
-            updateSelectedMutations();
-        });
-
-    });
-
 
 
     document.querySelectorAll(".selected-mutation").forEach(slotDiv => {
@@ -254,10 +230,33 @@ function addOnClicks() {
             }
         });
     });
+}
 
+function addOnClickForMutationSelecton() {
+    document.querySelectorAll(".mutation-item-selectable").forEach(item => {
+        item.addEventListener("click", function () {
+            if(item.classList.contains("selected")) {
+                builder.removeMutationId(Number(this.dataset.id));
+                item.classList.remove("selected");
+                updateSelectedMutations();
+                return;
+            }
+            const mutationId = Number(this.dataset.id);
 
-    
+            if(AppState.selectedGeneration !== null) {
+                if(!builder.addMutationToGeneration(mutationId, AppState.selectedGeneration - 1)) {
+                    console.log("Failed to add mutation to generation");
+                    return;
+                }
+            }
+            else {
+                if (!builder.addMutationAuto(mutationId)) return;
+            }
+            console.log("builder mutations", builder.generations);
+            updateSelectedMutations();
+        });
 
+    });
 }
 
 function clearSelectedGeneration() {
@@ -560,4 +559,5 @@ function populateMutations() {
         }
 
     });
+    addOnClickForMutationSelecton();
 }
