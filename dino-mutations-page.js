@@ -58,6 +58,14 @@ class MutationBuilder {
         return false;
     }
 
+    removeMutationId(mutationid) {
+        for (let gen of this.generations) {
+            if(gen.mutations.includes(mutationid)) {
+                gen.mutations = gen.mutations.map(id => id === mutationid ? null : id);
+            }
+        }
+    }
+
     addMutationToGeneration(mutationId, genIndex) {
         const gen = this.generations[genIndex];
         console.log("gen at start", gen);
@@ -76,6 +84,35 @@ class MutationBuilder {
     removeFromGeneration(generation, slotIndex) {
         this.generations[generation - 1].mutations[slotIndex] = null;
     }
+    clearSelections() {
+        this.generations.forEach(gen => gen.mutations = []);
+    }
+
+    getSaveData() {
+        const saveData = {};
+
+        this.generations.forEach((gen, index) => {
+            const mutations = gen.mutations.map(id =>
+                id == null ? -1 : id
+            );
+
+            saveData[`g${index + 1}`] = mutations;
+
+        });
+
+        return saveData;
+    }
+
+    loadFromSaveData(saveData) {
+        Object.entries(saveData).forEach(([key, mutations]) => {
+
+            const genIndex = parseInt(key.substring(1)) - 1;
+
+            this.generations[genIndex].mutations =
+                mutations.slice(0, this.maxMutationsPerGeneration);
+
+        });
+    }
 
 }
 
@@ -83,6 +120,8 @@ class MutationBuilder {
 const AppState = {
 
     selectedGeneration: null,
+    selectedDietType: null,
+    selectedRemovedMutations: new Set(),
 
     generations: {
         1: {
@@ -115,7 +154,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     populateMutations();
     addOnClicks();
-
+    toggleDietTypeButtonOnClick();
+    saveMutationSelectionsOnClick();
+    loadMutationSelectionssOnClick();
+    clearSelectedMutationsOnClick();
     
 });
 
@@ -125,12 +167,13 @@ function addOnClicks() {
     document.querySelectorAll(".mutation-item-selectable").forEach(item => {
         item.addEventListener("click", function () {
             if(item.classList.contains("selected")) {
-                console.log("Mutation already selected");
+                builder.removeMutationId(Number(this.dataset.id));
+                item.classList.remove("selected");
+                updateSelectedMutations();
                 return;
             }
             const mutationId = Number(this.dataset.id);
 
-            console.log("AppState.selectedGeneration", AppState.selectedGeneration);
             if(AppState.selectedGeneration !== null) {
                 if(!builder.addMutationToGeneration(mutationId, AppState.selectedGeneration - 1)) {
                     console.log("Failed to add mutation to generation");
@@ -307,6 +350,122 @@ function clearMutationContainers(){
 
 }
 
+function clearSelectedMutationsOnClick() {
+    const clearButton = document.getElementById("clear-selections-button");
+    clearButton.addEventListener("click", function() {
+        builder.clearSelections();
+        updateSelectedMutations();
+    });
+}
+
+function saveMutationSelectionsOnClick() {
+    const saveButton = document.getElementById("save-selections-button");
+    const outputElement = document.getElementById("save-selections-output");
+
+    saveButton.addEventListener("click", function() {
+        const saveDataObject = builder.getSaveData();
+        const saveDataJSON = JSON.stringify(saveDataObject);
+        outputElement.textContent = saveDataJSON;
+
+        console.log("Saved compact data:", saveDataObject);
+
+    });
+}
+
+function loadMutationSelectionssOnClick() {
+    const loadButton = document.getElementById("load-selections-button");
+    const inputElement = document.getElementById("load-selections-input");
+
+        loadButton.addEventListener("click", function () {
+
+        const raw = inputElement.value.trim();
+
+        if (!raw) {
+            console.warn("No input provided");
+            return;
+        }
+
+        let parsed;
+
+        // 1. Safe parse
+        try {
+            parsed = JSON.parse(raw);
+        }
+        catch (e) {
+            console.error("Invalid JSON");
+            return;
+        }
+
+        // 2. Validate top-level
+        if (typeof parsed !== "object" || parsed === null) {
+            console.error("Invalid save format");
+            return;
+        }
+
+        const sanitized = sanitizeSaveData(parsed);
+        builder.loadFromSaveData(sanitized);
+        updateSelectedMutations();
+
+
+    });
+}
+
+
+function sanitizeSaveData(rawData) { 
+    const sanitized = {};
+    for (const key in rawData) {
+
+        if (!/^g\d+$/.test(key)) {
+            console.warn("Invalid generation key:", key);
+            continue;
+        }
+        const genIndex = parseInt(key.substring(1)) - 1;
+        if (genIndex < 0 || genIndex >= builder.generations.length) {
+            console.warn("Generation out of range:", key);
+            continue;
+        }
+        const mutations = rawData[key];
+
+        if (!Array.isArray(mutations)) {
+            console.warn("Invalid mutations array:", key);
+            continue;
+        }
+        sanitized[key] = mutations.map(id => {
+
+            const num = Number(id);
+            // allow -1 (empty)
+            if (num === -1) return null;
+            // must be valid mutation id
+            if (!Number.isInteger(num) || !MUTATIONS[num]) {
+                console.warn("Invalid mutation id:", id);
+                return null;
+            }
+
+            return num;
+
+        });
+
+    }
+    return sanitized;
+}
+
+function toggleDietTypeButtonOnClick() {
+    document.querySelectorAll(".toggle-diet-type-button").forEach(button => { 
+        button.addEventListener("click", function() { 
+            if(button.classList.contains("selected")) {
+                button.classList.remove("selected");
+                AppState.selectedDietType = null;
+            }
+            else {
+                document.querySelectorAll(".toggle-diet-type-button").forEach(btn => btn.classList.remove("selected"));
+                const dietType = this.dataset.dietType;
+                AppState.selectedDietType = dietType;
+                button.classList.add("selected");
+            }
+            populateMutations();
+        });
+    });
+}
 
 
 function populateMutations() {
@@ -315,18 +474,50 @@ function populateMutations() {
     const slot2or4Container = document.getElementById("slot2-4-mutations-container");
     const unlockableContainer = document.getElementById("unlockable-mutations-container");
 
+    regularContainer.innerHTML = "";
+    slot2or4Container.innerHTML = "";
+    unlockableContainer.innerHTML = "";
+
 
     // Loop through each mutation
     MUTATIONS.forEach((mutation, index) => {
+        if(AppState.selectedDietType && mutation.dietType && !mutation.dietType.includes(AppState.selectedDietType)) {
+            return; 
+        }
 
         // Create the outer mutation-item div
         const mutationDiv = document.createElement("div");
         mutationDiv.className = "mutation-item mutation-item-selectable";
         mutationDiv.dataset.id = index;
 
+        if (AppState.selectedRemovedMutations.has(index)) {
+            mutationDiv.classList.add("removed");
+        }
+
+        mutationDiv.style.position = "relative";
+
+        const removeBtn = document.createElement("div");
+        removeBtn.className = "mutation-remove-btn light-font-color";
+        removeBtn.innerHTML = "&times;";
+        removeBtn.dataset.id = index;
+        mutationDiv.appendChild(removeBtn);
+
+        removeBtn.addEventListener("click", function(e) { 
+            e.stopPropagation();
+            const mutationId = Number(this.dataset.id);
+            if(mutationDiv.classList.contains("removed")) {
+                mutationDiv.classList.remove("removed");
+                AppState.selectedRemovedMutations.delete(mutationId);
+            }
+            else {
+                mutationDiv.classList.add("removed");
+                AppState.selectedRemovedMutations.add(mutationId);
+            }
+        });
+
         // Create and append the name (h3)
         const nameH3 = document.createElement("h3");
-        nameH3.className = "light-font-color";
+        nameH3.className = "light-font-color mutation-name-margin-adjustment";
         nameH3.textContent = mutation.name;
         mutationDiv.appendChild(nameH3);
 

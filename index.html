@@ -19,7 +19,7 @@
     <div>
         <nav  class="nav">
             <div class="navLoc">
-                <h3 class="lightFont">Lobby</h3>
+                <h3 class="light-font">Lobby</h3>
             </div> 
             <ul class="navList">
 
@@ -29,210 +29,259 @@
     </div>
     <div class="main-content">
         <h1>All Mutation options</h1>
-        <div class="mutations-full-list-container">
+        <div class="main-content-section">
+            <div class="flex-row"> 
+                <div 
+                    data-diet-type="carnivore"
+                    class="light-font button-light toggle-diet-type-button">
+                    <h3>Carnivore</h3>
+                </div> 
+                <div    
+                    data-diet-type="herbivore" 
+                    class="light-font button-light toggle-diet-type-button">
+                    <h3>Herbivore</h3>
+                </div>
+                <div 
+                    data-diet-type="omnivore" 
+                    class="light-font button-light toggle-diet-type-button">
+                    <h3>Omnivore</h3>
+                </div>
+            </div>
+            <div class="mutations-full-list-container">
 
-            <h2>Regular Mutations</h2>
-            <div id="regular-mutations-container" class="mutations-container"></div>   
-            <h2>Slot 2 and 4 ONLY</h2>
-            <div id="slot2-4-mutations-container" class="mutations-container"></div>
-            <h2>Unlockable</h2>
-            <div id="unlockable-mutations-container" class="mutations-container"></div>
+                <h2>Regular Mutations</h2>
+                <div id="regular-mutations-container" class="mutations-container"></div>   
+                <h2>Slot 2 and 4 ONLY</h2>
+                <div id="slot2-4-mutations-container" class="mutations-container"></div>
+                <h2>Unlockable</h2>
+                <div id="unlockable-mutations-container" class="mutations-container"></div>
+            </div>
+            <div class="flex-row">
+                <div id="clear-selections-button" class="button-light">
+                    <p>Clear Selections</p>
+                </div>
+            </div>
         </div>
+        
 
 
 
-
-        <div class="mutations-selection-container">
-            <div>
-                <h1>Selected Mutations</h1>
-            </div>
-            <div class="generation-row">
-                <div class="selected-mutation-generation mutation-item" data-generation-id="1">
-                    <h3>Generation 1</h3>
+        <div class="main-content-section">
+            <div class="mutations-selection-container">
+                <div>
+                    <h1>Selected Mutations</h1>
                 </div>
+                <div class="generation-row">
+                    <div class="selected-mutation-generation mutation-item" data-generation-id="1">
+                        <h3>Generation 1</h3>
+                    </div>
 
-                <div 
-                    id="generation-1" 
-                    class="selected-mutation-generation-row"
-                    data-generation-id="1"
-                    >
                     <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="0"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="1"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="2"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="3"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                </div>
-            </div>
-            <div class="generation-row">
-                <div class="selected-mutation-generation mutation-item" data-generation-id="2">
-                    <h3>Generation 2</h3>
-                </div>
-
-                <div 
-                    id="generation-2" 
-                    class="selected-mutation-generation-row"
-                    data-generation-id="2"
-                    >
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="0"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="1"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="2"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="3"
-                    >
-                        <p class="selected-mutation-name"></p>
+                        id="generation-1" 
+                        class="selected-mutation-generation-row"
+                        data-generation-id="1"
+                        >
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="0"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="1"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="2"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="3"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="generation-row">
-                <div class="selected-mutation-generation mutation-item" data-generation-id="3">
-                    <h3>Generation 3</h3>
+                <div class="generation-row">
+                    <div class="selected-mutation-generation mutation-item" data-generation-id="2">
+                        <h3>Generation 2</h3>
+                    </div>
+
+                    <div 
+                        id="generation-2" 
+                        class="selected-mutation-generation-row"
+                        data-generation-id="2"
+                        >
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="0"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="1"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="2"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="3"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="generation-row">
+                    <div class="selected-mutation-generation mutation-item" data-generation-id="3">
+                        <h3>Generation 3</h3>
+                    </div>
+                
+                    <div 
+                        id="generation-3" 
+                        class="selected-mutation-generation-row" 
+                        data-generation-id="3">
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="0"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="1"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="2"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="3"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generation-row">
+                    <div class="selected-mutation-generation mutation-item" data-generation-id="4">
+                        <h3>Generation 4</h3>
+                    </div>
+                    
+                    <div 
+                        id="generation-4" 
+                        class="selected-mutation-generation-row" 
+                        data-generation-id="4">
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="0"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="1"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="2"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="3"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generation-row">
+                    <div class="selected-mutation-generation mutation-item" data-generation-id="5">
+                        <h3>Generation Inherited</h3>
+                    </div>
+
+                    <div 
+                        id="inherited" 
+                        class="selected-mutation-generation-row" 
+                        data-generation-id="5">
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="0"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="1"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="2"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                        <div 
+                            class="selected-mutation mutation-item light-font-color" 
+                            data-mutation-slot-index="3"
+                        >
+                            <p class="selected-mutation-name"></p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="homeSummary">
+                    <h3 class="darkFont"></h3>
+                    <p class="darkFont"></p>
                 </div>
             
-                <div 
-                    id="generation-3" 
-                    class="selected-mutation-generation-row" 
-                    data-generation-id="3">
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="0"
-                    >
-                        <p class="selected-mutation-name"></p>
+            </div>
+        </div>
+
+        <div class="main-content-section">
+            <div class="flex-column">
+                <div class="flex-row flex-row-left">
+                    <div id="save-selections-button" class="button-light">
+                        <p class="light-font">Save Selections</p>
                     </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="1"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="2"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="3"
-                    >
-                        <p class="selected-mutation-name"></p>
+                    <div>
+                        <p id="save-selections-output"></p>
                     </div>
                 </div>
-            </div>
-
-            <div class="generation-row">
-                <div class="selected-mutation-generation mutation-item" data-generation-id="4">
-                    <h3>Generation 4</h3>
+                <div class="flex-row flex-row-left">
+                    <div id="load-selections-button" class="button-light">
+                        <p class="light-font">Load Selections</p>
+                    </div>
+                    <div>
+                        <input id="load-selections-input" type="text" class="large-input"></input>
+                    </div>
                 </div>
                 
-                <div 
-                    id="generation-4" 
-                    class="selected-mutation-generation-row" 
-                    data-generation-id="4">
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="0"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="1"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="2"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="3"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                </div>
             </div>
-
-            <div class="generation-row">
-                <div class="selected-mutation-generation mutation-item" data-generation-id="5">
-                    <h3>Generation Inherited</h3>
-                </div>
-
-                <div 
-                    id="inherited" 
-                    class="selected-mutation-generation-row" 
-                    data-generation-id="5">
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="0"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="1"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="2"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                    <div 
-                        class="selected-mutation mutation-item light-font-color" 
-                        data-mutation-slot-index="3"
-                    >
-                        <p class="selected-mutation-name"></p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="homeSummary">
-                <h3 class="darkFont"></h3>
-                <p class="darkFont"></p>
-            </div>
-        
         </div>
+        
 
     </div>
 
