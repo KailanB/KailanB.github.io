@@ -237,7 +237,7 @@ const MUTATIONS = [
     {
         name: "Hypermetabolic Inanition (Carnivore)",
         description: "The less hunger you have the more damage you deal.",
-        value: null,
+        value: "15%?, 20%",
         criteria: "slot 2–4",
         additionalInfo: null,
         dietType: ["carnivore"]
@@ -253,7 +253,7 @@ const MUTATIONS = [
     {
         name: "Tactile Endurance (Herbivore)",
         description: "Convert incoming damage to stamina.",
-        value: "?, 35%",
+        value: "%25, 35%",
         criteria: "slot 2–4",
         additionalInfo: null,
         dietType: ["herbivore"]
