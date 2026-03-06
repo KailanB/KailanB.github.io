@@ -102,6 +102,9 @@ class MutationBuilder {
 
         return saveData;
     }
+    getRemovedData() {
+        return Array.from(AppState.selectedRemovedMutations);
+    }
 
     loadFromSaveData(saveData) {
         Object.entries(saveData).forEach(([key, mutations]) => {
@@ -112,6 +115,10 @@ class MutationBuilder {
                 mutations.slice(0, this.maxMutationsPerGeneration);
 
         });
+    }
+
+    loadRemovedSelectionsData(removedData) {
+        AppState.selectedRemovedMutations = new Set(removedData);
     }
 
 }
@@ -151,12 +158,16 @@ const builder = new MutationBuilder();
 
 document.addEventListener("DOMContentLoaded", () => {
     
+    const uselessMutations = [26,20,17,12,2,1,15,16,23];
+    builder.loadRemovedSelectionsData(uselessMutations);
 
     populateMutations();
     addOnClicks();
     toggleDietTypeButtonOnClick();
     saveMutationSelectionsOnClick();
+    saveRemovedMutationSelectionsOnClick();
     loadMutationSelectionssOnClick();
+    loadRemovedMutationSelectionsOnClick();
     clearSelectedMutationsOnClick();
     
 });
@@ -371,6 +382,18 @@ function saveMutationSelectionsOnClick() {
     });
 }
 
+function saveRemovedMutationSelectionsOnClick() {
+    const saveButton = document.getElementById("save-removed-selections-button");
+    const outputElement = document.getElementById("save-removed-selections-output");
+
+    saveButton.addEventListener("click", function() {
+        const removedDataObject = builder.getRemovedData();
+        const saveDataJSON = JSON.stringify(removedDataObject);
+        outputElement.textContent = saveDataJSON;
+
+    });
+}
+
 function loadMutationSelectionssOnClick() {
     const loadButton = document.getElementById("load-selections-button");
     const inputElement = document.getElementById("load-selections-input");
@@ -385,8 +408,6 @@ function loadMutationSelectionssOnClick() {
         }
 
         let parsed;
-
-        // 1. Safe parse
         try {
             parsed = JSON.parse(raw);
         }
@@ -395,7 +416,6 @@ function loadMutationSelectionssOnClick() {
             return;
         }
 
-        // 2. Validate top-level
         if (typeof parsed !== "object" || parsed === null) {
             console.error("Invalid save format");
             return;
@@ -407,6 +427,53 @@ function loadMutationSelectionssOnClick() {
 
 
     });
+}
+function loadRemovedMutationSelectionsOnClick() {
+    const loadButton = document.getElementById("load-removed-selections-button");
+    const inputElement = document.getElementById("load-removed-selections-input");
+
+        loadButton.addEventListener("click", function () {
+        const raw = inputElement.value.trim();
+        if (!raw) {
+            console.warn("No input provided");
+            return;
+        }
+
+        let parsed;
+        try {
+            parsed = JSON.parse(raw);
+        }
+        catch (e) {
+            console.error("Invalid JSON");
+            return;
+        }
+        console.log(typeof parsed, parsed);
+        if (typeof parsed !== "object" || parsed === null) {
+            console.error("Invalid save format");
+            return;
+        }
+
+        const sanitized = sanitizeLoadData(parsed);
+        builder.loadRemovedSelectionsData(sanitized);
+        populateMutations();
+
+
+    });
+}
+
+function sanitizeLoadData(rawData) {
+    if (!Array.isArray(rawData)) {
+        return [];
+    }
+    const cleaned = [];
+    rawData.forEach(id => {
+        const num = Number(id);
+        if(num != -1 && Number.isInteger(num)){
+            cleaned.push(num);
+        }
+        
+    });
+    return cleaned;
 }
 
 
@@ -462,8 +529,11 @@ function toggleDietTypeButtonOnClick() {
                 button.classList.add("selected");
             }
             populateMutations();
+            updateSelectableHighlights();
         });
+        
     });
+    
 }
 
 
@@ -472,10 +542,12 @@ function populateMutations() {
     const regularContainer = document.getElementById("regular-mutations-container");
     const slot2or4Container = document.getElementById("slot2-4-mutations-container");
     const unlockableContainer = document.getElementById("unlockable-mutations-container");
+    const removedMutationsContainer = document.getElementById("removed-mutations-container");
 
     regularContainer.innerHTML = "";
     slot2or4Container.innerHTML = "";
     unlockableContainer.innerHTML = "";
+    removedMutationsContainer.innerHTML = "";
 
 
     // Loop through each mutation
@@ -489,9 +561,7 @@ function populateMutations() {
         mutationDiv.className = "mutation-item mutation-item-selectable";
         mutationDiv.dataset.id = index;
 
-        if (AppState.selectedRemovedMutations.has(index)) {
-            mutationDiv.classList.add("removed");
-        }
+
 
         mutationDiv.style.position = "relative";
 
@@ -512,6 +582,8 @@ function populateMutations() {
                 mutationDiv.classList.add("removed");
                 AppState.selectedRemovedMutations.add(mutationId);
             }
+            populateMutations();
+            updateSelectableHighlights();
         });
 
         // Create and append the name (h3)
@@ -549,14 +621,18 @@ function populateMutations() {
             infoP.textContent = mutation.additionalInfo;
             mutationDiv.appendChild(infoP);
         }
-
-        if (!mutation.criteria) {
+        if (AppState.selectedRemovedMutations.has(index)) {
+            mutationDiv.classList.add("removed");
+            removedMutationsContainer.appendChild(mutationDiv);
+        }
+        else if (!mutation.criteria) {
             regularContainer.appendChild(mutationDiv);
         } else if (mutation.criteria === "slot 2–4") {
             slot2or4Container.appendChild(mutationDiv);
         } else if (mutation.criteria === "unlockable") {
             unlockableContainer.appendChild(mutationDiv);
         }
+
 
     });
     addOnClickForMutationSelecton();

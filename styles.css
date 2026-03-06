@@ -2,7 +2,7 @@
     --darkGreen: #0b130a;
     /* --HeaderBGColor: #7f7dc0; */
     --neonGreen: #cbfbf1;
-    --neonPink: #f5cbfb;
+    --neonPink: #ff64bc;
 
     --selectedColor: #ffffff;
 
@@ -184,11 +184,6 @@ p {
 .mutation-item.removed {
     border: 2px solid var(--neonPink);
 }
-
-.mutation-item-selectable {
-
-}
-
 
 
 .light-font-color {
