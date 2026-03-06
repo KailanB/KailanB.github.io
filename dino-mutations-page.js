@@ -323,43 +323,6 @@ function updateSelectableHighlights() {
     });
 }
 
-
-
-
-
-// function updateSelectedMutations() {
-//     builderState.generations.forEach((generation, generationIndex) => {
-
-//         console.log("Generation:", generation.id);
-//         const generationElement = AppState.generations[generation.id].element;
-//         generation.mutations.forEach((mutationId, mutationIndex) => {
-
-//             const mutation = MUTATIONS[mutationId];
-
-//             console.log("  Mutation Index:", mutationIndex);
-//             console.log("  Mutation ID:", mutationId);
-//             console.log("  Mutation Name:", mutation.name);
-
-//             console.log("AppState", AppState);
-//             console.log("Generation Element:", generationElement);
-//             // example: render mutation into generation element
-//             const slotDiv = generationElement.querySelector(
-//                 `.selected-mutation[data-mutation-slot-index="${mutationIndex}"]`
-//             );
-//             if (!slotDiv) return;
-//             const nameText = slotDiv.querySelector(".selected-mutation-name");
-//             nameText.textContent = mutation.name;
-
-
-//         });
-
-//     });
-// }
-
-function clearMutationContainers(){
-
-}
-
 function clearSelectedMutationsOnClick() {
     const clearButton = document.getElementById("clear-selections-button");
     clearButton.addEventListener("click", function() {
@@ -604,14 +567,6 @@ function populateMutations() {
             valueP.className = "light-font-color";
             valueP.textContent = `Value: ${mutation.value}`;
             mutationDiv.appendChild(valueP);
-        }
-
-        // If criteria exists, show it
-        if (mutation.criteria) {
-            const critP = document.createElement("p");
-            critP.className = "light-font-color";
-            critP.textContent = `Criteria: ${mutation.criteria}`;
-            mutationDiv.appendChild(critP);
         }
 
         // If additionalInfo exists, show it
