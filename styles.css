@@ -151,10 +151,11 @@ p {
 
 }
 
+
 .mutation-item {
     display: flex;
     flex-direction: column;
-    width: 390px;
+    width: 250px;
     padding: 12px;
     border: 1px solid var(--neonGreen);
     box-sizing: border-box;
@@ -168,6 +169,10 @@ p {
     border: var(--darkGreen) solid 2px;
     background-color: var(--neonGreen);
 
+}
+
+.mutation-item-selectable {
+    width: 350px;
 }
 
 .mutation-item.selected p, .mutation-item.selected h3 {
