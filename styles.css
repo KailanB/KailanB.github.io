@@ -45,7 +45,7 @@ h2 {
 
 h3 {
     margin: 0px;
-    font-size: 1.5em;
+    font-size: 1.4em;
     color: var(--lightFont);
     /* font-family: "Italiana", sans-serif; */
     font-weight: 400;
@@ -136,7 +136,7 @@ p {
     align-items: center;
     justify-content: center;
     gap: 35px;
-    width: min(95vw, 1780px);
+    width: min(95vw, 2075px);
     padding: 25px;
 }
 
@@ -154,7 +154,7 @@ p {
 .mutation-item {
     display: flex;
     flex-direction: column;
-    width: 325px;
+    width: 390px;
     padding: 12px;
     border: 1px solid var(--neonGreen);
     box-sizing: border-box;

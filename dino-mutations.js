@@ -2,7 +2,7 @@
 
 const MUTATIONS = [
     {
-        name: "Accelerated Prey Drive (Carnivore)",
+        name: "Accelerated Prey Drive (Carni)",
         description: "Deal more damage to animals below 35% health.",
         value: "10%",
         criteria: null,
@@ -10,7 +10,7 @@ const MUTATIONS = [
         dietType: ["carnivore"]
     },
     {
-        name: "Advanced Gestation (Female Only)",
+        name: "Advanced Gestation (Female)",
         description: "Faster egg gestation/incubation/cooldown rate.",
         value: "50%",
         criteria: null,
@@ -18,7 +18,7 @@ const MUTATIONS = [
         dietType: null
     },
     {
-        name: "Barometric Sensitivity (Herbivore)",
+        name: "Barometric Sensitivity (Herb)",
         description: "Receive an indication prior to storms or droughts.",
         value: null,
         criteria: null,
@@ -83,7 +83,7 @@ const MUTATIONS = [
         dietType: null,
     },
     {
-        name: "Hematophagy (Carnivore)",
+        name: "Hematophagy (Carni)",
         description: "Restore some thirst while eating corpses.",
         value: "15%",
         criteria: null,
@@ -91,7 +91,7 @@ const MUTATIONS = [
         dietType: ["carnivore"]
     },
     {
-        name: "Hemomania (Carnivore)",
+        name: "Hemomania (Carni)",
         description: "Do extra damage on bleeding target.",
         value: "5%, 7%, 9%?",
         criteria: null,
@@ -115,7 +115,7 @@ const MUTATIONS = [
         dietType: null,
     },
     {
-        name: "Hypervigilance (Herbivore)",
+        name: "Hypervigilance (Herb)",
         description: "Increases camera angles when eating and drinking. Increases footsteps audio from others.",
         value: "50%",
         criteria: null,
@@ -155,7 +155,7 @@ const MUTATIONS = [
         dietType: null,
     },
     {
-        name: "Photosynthetic Regeneration (Herbivore)",
+        name: "Photosynthetic Regeneration (Herb)",
         description: "Regenerate stamina faster during the day.",
         value: "10%",
         criteria: null,
@@ -179,7 +179,7 @@ const MUTATIONS = [
         dietType: null,
     },
     {
-        name: "Social Behavior (Herbivore/Omnivore)",
+        name: "Social Behavior (Herb/Omni)",
         description: "Increased group size. Group Leader Only.",
         value: null,
         criteria: null,
@@ -203,7 +203,7 @@ const MUTATIONS = [
         dietType: null,
     },
     {
-        name: "Truculency (Herbivore)",
+        name: "Truculency (Herb)",
         description: "Bucking has a higher chance to dismount latched animals.",
         value: "5%, 10%, 15%",
         criteria: null,
@@ -219,7 +219,7 @@ const MUTATIONS = [
         dietType: null,
     },
     {
-        name: "Xerocole Adaptation (Herbivore)",
+        name: "Xerocole Adaptation (Herb)",
         description: "Gain some water when eating plants.",
         value: "15%, 20%, 25%",
         criteria: null,
@@ -235,7 +235,7 @@ const MUTATIONS = [
         dietType: null,
     },
     {
-        name: "Hypermetabolic Inanition (Carnivore)",
+        name: "Hypermetabolic Inanition (Carni)",
         description: "The less hunger you have the more damage you deal.",
         value: "15%?, 20%",
         criteria: "slot 2–4",
@@ -251,7 +251,7 @@ const MUTATIONS = [
         dietType: null,
     },
     {
-        name: "Tactile Endurance (Herbivore)",
+        name: "Tactile Endurance (Herb)",
         description: "Convert incoming damage to stamina.",
         value: "%25, 35%",
         criteria: "slot 2–4",
@@ -267,7 +267,7 @@ const MUTATIONS = [
         dietType: null,
     },
     {
-        name: "Augmented Tapetum (Carnivore)",
+        name: "Augmented Tapetum (Carni)",
         description: "Increased vision at night.",
         value: null,
         criteria: "unlockable",
@@ -275,11 +275,11 @@ const MUTATIONS = [
         dietType: ["carnivore"]
     },
     {
-        name: "Cannibalistic (Carnivore)",
-        description: "For species that are not, by default, cannibals. Adds their own species as a preferred prey for nutrients.",
+        name: "Cannibalistic (Carni)",
+        description: "For species that are not, by default, cannibals. Adds their own for nutrients.",
         value: null,
         criteria: "unlockable",
-        additionalInfo: "Eat your own species. Unlocks on Slot 2. As of Update 0.18.11 the required amount needed to unlock this mutation has been reduced.",
+        additionalInfo: "Eat your own species. Unlocks on Slot 2.",
         dietType: ["carnivore"]
     },
     {
@@ -299,7 +299,7 @@ const MUTATIONS = [
         dietType: null,
     },
     {
-        name: "Osteophagic (Carnivore)",
+        name: "Osteophagic (Carni)",
         description: "Able to consume bones to regenerate fractures faster.",
         value: null,
         criteria: "unlockable",
@@ -307,8 +307,8 @@ const MUTATIONS = [
         dietType: ["carnivore"]
     },
     {
-        name: "Prolific Reproduction (Female Only)",
-        description: "Your babies have increased health and stamina regen. Your babies require less food and they grow faster.",
+        name: "Prolific Reproduction (Female)",
+        description: "Your babies have increased health and stamina regen. Your babies require less food and grow faster.",
         value: "10%, 15%",
         criteria: "unlockable",
         additionalInfo: "Unlocks on Slot 2.",
@@ -324,7 +324,7 @@ const MUTATIONS = [
     },
     {
         name: "Reniculate Kidneys",
-        description: "Can drink saltwater. Thirst Pool: 1000. Thirst intake value while drinking saltwater: -2.5%.",
+        description: "Can drink saltwater. Thirst Pool: 1000.",
         value: null,
         criteria: "unlockable",
         additionalInfo: "Lose 1250 thirst by drinking saltwater. 50 thirst grants the 'Fluid Deficient' debuff and 1200 thirst removes it. Unlocks on Slot 2/3.",
